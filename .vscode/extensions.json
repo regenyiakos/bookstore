@@ -1,0 +1,47 @@
+{
+  "recommendations": [
+    // Code Quality & Formatting
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+
+    // JavaScript/React Development
+    "dsznajder.es7-react-js-snippets",
+    "xabikos.javascriptsnippets",
+    "ms-vscode.vscode-typescript-next",
+
+    // Database
+    "ckolkman.vscode-postgres",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+
+    // Docker
+    "ms-azuretools.vscode-docker",
+
+    // Git
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+
+    // Utilities
+    "christian-kohler.path-intellisense",
+    "visualstudioexptteam.vscodeintellicode",
+    "wayou.vscode-todo-highlight",
+    "usernamehw.errorlens",
+    "naumovs.color-highlight",
+
+    // REST API Testing
+    "humao.rest-client",
+    "rangav.vscode-thunder-client",
+
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+
+    // Environment Files
+    "mikestead.dotenv",
+
+    // Code Spell Checker
+    "streetsidesoftware.code-spell-checker"
+  ],
+  "unwantedRecommendations": []
+}

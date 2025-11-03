@@ -1,0 +1,55 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "Modern full-stack bookstore application with React frontend and Express backend",
+  "private": true,
+  "workspaces": [
+    "client",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:client\" --names \"backend,client\" --prefix-colors \"blue,green\"",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:backend": "npm run dev --workspace=backend",
+    "start:client": "npm start --workspace=client",
+    "start:backend": "npm start --workspace=backend",
+    "build": "npm run build --workspace=client",
+    "build:client": "npm run build --workspace=client",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "format": "prettier --write \"**/*.{js,jsx,json,md,yml,yaml}\" --ignore-path .prettierignore",
+    "format:check": "prettier --check \"**/*.{js,jsx,json,md,yml,yaml}\" --ignore-path .prettierignore",
+    "test": "npm run test --workspaces --if-present",
+    "db:up": "docker-compose up -d postgres",
+    "db:down": "docker-compose down",
+    "db:reset": "docker-compose down -v && docker-compose up -d postgres",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/bookstore.git"
+  },
+  "keywords": [
+    "bookstore",
+    "e-commerce",
+    "react",
+    "express",
+    "postgresql",
+    "full-stack"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
