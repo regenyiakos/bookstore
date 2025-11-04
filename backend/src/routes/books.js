@@ -2,80 +2,48 @@ const express = require('express');
 const router = express.Router();
 const { authenticateToken } = require('../middleware/auth');
 const { requireAdmin } = require('../middleware/roleCheck');
+const bookController = require('../controllers/bookController');
 
 /**
  * @route   GET /api/v1/books
  * @desc    Get all books with pagination and filters
  * @access  Public
  */
-router.get('/', (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: {
-      code: 'NOT_IMPLEMENTED',
-      message: 'Get books endpoint not yet implemented',
-    },
-  });
-});
+router.get('/', bookController.getAllBooks.bind(bookController));
+
+/**
+ * @route   GET /api/v1/books/:id/related
+ * @desc    Get related books (same category)
+ * @access  Public
+ */
+router.get('/:id/related', bookController.getRelatedBooks.bind(bookController));
 
 /**
  * @route   GET /api/v1/books/:id
- * @desc    Get single book by ID
+ * @desc    Get single book by ID with review statistics
  * @access  Public
  */
-router.get('/:id', (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: {
-      code: 'NOT_IMPLEMENTED',
-      message: 'Get book by ID endpoint not yet implemented',
-    },
-  });
-});
+router.get('/:id', bookController.getBookById.bind(bookController));
 
 /**
  * @route   POST /api/v1/books
  * @desc    Create a new book
  * @access  Private (Admin only)
  */
-router.post('/', authenticateToken, requireAdmin, (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: {
-      code: 'NOT_IMPLEMENTED',
-      message: 'Create book endpoint not yet implemented',
-    },
-  });
-});
+router.post('/', authenticateToken, requireAdmin, bookController.createBook.bind(bookController));
 
 /**
  * @route   PUT /api/v1/books/:id
  * @desc    Update a book
  * @access  Private (Admin only)
  */
-router.put('/:id', authenticateToken, requireAdmin, (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: {
-      code: 'NOT_IMPLEMENTED',
-      message: 'Update book endpoint not yet implemented',
-    },
-  });
-});
+router.put('/:id', authenticateToken, requireAdmin, bookController.updateBook.bind(bookController));
 
 /**
  * @route   DELETE /api/v1/books/:id
  * @desc    Delete a book
  * @access  Private (Admin only)
  */
-router.delete('/:id', authenticateToken, requireAdmin, (req, res) => {
-  res.status(501).json({
-    success: false,
-    error: {
-      code: 'NOT_IMPLEMENTED',
-      message: 'Delete book endpoint not yet implemented',
-    },
-  });
-});
+router.delete('/:id', authenticateToken, requireAdmin, bookController.deleteBook.bind(bookController));
 
 module.exports = router;

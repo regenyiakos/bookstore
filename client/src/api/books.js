@@ -7,9 +7,14 @@ export const booksAPI = {
     return apiClient.get('/books', { params });
   },
 
-  // Get single book by ID
+  // Get single book by ID with review statistics
   getBookById: async id => {
     return apiClient.get(`/books/${id}`);
+  },
+
+  // Get related books (same category)
+  getRelatedBooks: async (id, limit = 6) => {
+    return apiClient.get(`/books/${id}/related`, { params: { limit } });
   },
 
   // Create new book (Admin only)
