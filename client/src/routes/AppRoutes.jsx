@@ -3,6 +3,7 @@ import HomePage from '@pages/Home';
 import BooksPage from '@pages/Books';
 import BookDetailsPage from '@pages/BookDetails';
 import AboutPage from '@pages/About';
+import ContactPage from '@pages/Contact';
 import LoginPage from '@pages/Login';
 import RegisterPage from '@pages/Register';
 import CartPage from '@pages/Cart';
@@ -20,6 +21,7 @@ const AppRoutes = () => {
       <Route path="/books" element={<BooksPage />} />
       <Route path="/books/:id" element={<BookDetailsPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
