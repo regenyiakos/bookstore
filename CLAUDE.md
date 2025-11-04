@@ -83,3 +83,106 @@ Planned features mentioned in specification:
 
 ## Deployment
 Suggested platforms: Vercel (frontend), Render/Railway (backend + database)
+
+## Development Workflow
+
+### CRITICAL: Read These First
+Before implementing ANY feature, read:
+- **[DEVELOPMENT_GUIDELINES.md](./DEVELOPMENT_GUIDELINES.md)** - Required reading for all developers
+- **[TESTING_CHECKLIST.md](./TESTING_CHECKLIST.md)** - Use after EVERY code change
+
+### Quick Rules for AI Agents
+
+**BEFORE implementing features:**
+1. ✅ Understand EXACTLY which files you're allowed to modify
+2. ✅ Get explicit permission to modify shared files
+3. ✅ Create feature-specific folders (don't modify existing components)
+4. ✅ Test EVERYTHING after your changes (use TESTING_CHECKLIST.md)
+
+**NEVER do these without explicit permission:**
+- ❌ Modify auth-related files (Login, Register, authService, authController)
+- ❌ Change shared components outside your feature scope
+- ❌ Update package.json or configuration files
+- ❌ Refactor working code "while you're at it"
+- ❌ Change API clients used by multiple features
+
+**ALWAYS do these:**
+- ✅ Create new files in feature-specific directories
+- ✅ Report ALL files you created/modified
+- ✅ Test all existing features still work
+- ✅ Check for console errors
+- ✅ Verify no breaking changes
+
+### Git Workflow
+
+```bash
+# 1. Commit working code BEFORE starting new features
+git add .
+git commit -m "checkpoint: all features working"
+
+# 2. Create feature branch
+git checkout -b feature/my-feature
+
+# 3. Make small changes, test, commit
+git add specific-files
+git commit -m "feat: add component X"
+
+# 4. Repeat until feature is complete
+
+# 5. Push and create PR
+git push origin feature/my-feature
+```
+
+### Testing Requirements
+
+**After EVERY code change:**
+- [ ] Run the Quick Test (5 min) - See TESTING_CHECKLIST.md
+- [ ] No console errors
+- [ ] Basic functionality works
+
+**Before EVERY commit:**
+- [ ] Run the Full Regression Test (15 min) - See TESTING_CHECKLIST.md
+- [ ] All pages still work
+- [ ] Authentication still works
+- [ ] Navigation still works
+
+**Before merging to development:**
+- [ ] All tests pass
+- [ ] Code review completed
+- [ ] PR template checklist filled out
+
+### File Organization
+
+When creating new features, use this structure:
+```
+client/src/pages/[FeatureName]/
+  ├── index.jsx
+  ├── components/       # Feature-specific components
+  ├── hooks/           # Feature-specific hooks
+  └── utils/           # Feature-specific utilities
+```
+
+**Only modify shared files when absolutely necessary and with permission.**
+
+### Recovery Procedures
+
+If something breaks:
+```bash
+# See what changed
+git status
+git diff
+
+# Revert to last working commit
+git reset --hard HEAD~1
+
+# Or restore specific file
+git checkout HEAD~1 -- path/to/file.js
+```
+
+### Documentation References
+
+- **[DEVELOPMENT_GUIDELINES.md](./DEVELOPMENT_GUIDELINES.md)** - Complete development workflow
+- **[TESTING_CHECKLIST.md](./TESTING_CHECKLIST.md)** - Testing procedures
+- **[.github/PULL_REQUEST_TEMPLATE.md](./.github/PULL_REQUEST_TEMPLATE.md)** - PR requirements
+- **backend/AUTH_IMPLEMENTATION.md** - Authentication system documentation
+- **backend/AUTH_QUICK_REFERENCE.md** - Quick auth API reference
