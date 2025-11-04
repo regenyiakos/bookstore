@@ -31,4 +31,9 @@ export const booksAPI = {
   deleteBook: async id => {
     return apiClient.delete(`/books/${id}`);
   },
+
+  // Get all categories with book counts
+  getCategories: async () => {
+    return apiClient.get('/books/categories');
+  },
 };

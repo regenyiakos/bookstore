@@ -239,6 +239,27 @@ class BookService {
     await book.destroy();
     return true;
   }
+
+  /**
+   * Get all book categories with book counts
+   * @returns {Promise<Array>} Array of categories with counts
+   */
+  async getCategories() {
+    const categories = await Book.findAll({
+      attributes: [
+        'category',
+        [sequelize.fn('COUNT', sequelize.col('id')), 'count'],
+      ],
+      group: ['category'],
+      order: [[sequelize.fn('COUNT', sequelize.col('id')), 'DESC']],
+      raw: true,
+    });
+
+    return categories.map((cat) => ({
+      name: cat.category,
+      count: parseInt(cat.count) || 0,
+    }));
+  }
 }
 
 module.exports = new BookService();

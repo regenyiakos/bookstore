@@ -283,6 +283,34 @@ class BookController {
   }
 
   /**
+   * @route   GET /api/v1/books/categories
+   * @desc    Get all book categories with counts
+   * @access  Public
+   */
+  async getCategories(req, res) {
+    try {
+      const categories = await bookService.getCategories();
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          categories,
+          count: categories.length,
+        },
+      });
+    } catch (error) {
+      console.error('Error in getCategories:', error);
+      return res.status(500).json({
+        success: false,
+        error: {
+          code: 'DATABASE_ERROR',
+          message: 'An error occurred while retrieving categories',
+        },
+      });
+    }
+  }
+
+  /**
    * @route   DELETE /api/v1/books/:id
    * @desc    Delete a book
    * @access  Private (Admin only)

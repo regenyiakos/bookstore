@@ -11,7 +11,19 @@
       "Bash(taskkill:*)",
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(temp_books_index.jsx)",
+      "Bash(/dev/null)",
+      "Bash(src/server.js)",
+      "Bash(timeout 5 bash:*)",
+      "Bash(npm start)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_close",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []

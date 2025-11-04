@@ -12,6 +12,13 @@ const bookController = require('../controllers/bookController');
 router.get('/', bookController.getAllBooks.bind(bookController));
 
 /**
+ * @route   GET /api/v1/books/categories
+ * @desc    Get all book categories with counts
+ * @access  Public
+ */
+router.get('/categories', bookController.getCategories.bind(bookController));
+
+/**
  * @route   GET /api/v1/books/:id/related
  * @desc    Get related books (same category)
  * @access  Public
